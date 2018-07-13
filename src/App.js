@@ -27,10 +27,10 @@ class App extends Component {
     })
   }
 
-  updateInventory() {
+  updateInventory(val) {
     axios.get('/api/inventory').then(response => {
       this.setState({
-        inventory: response.data
+        inventory: val
       })
     })
   }
@@ -47,7 +47,7 @@ class App extends Component {
             <Dashboard inventory={this.state.inventory}
               updateInventory={this.updateInventory}/>
           </div>
-          <div classname='form'>
+          <div className='form'>
             <Form updateInventory={this.updateInventory}/>
           </div>
         </main>

@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 app.get('/api/inventory', controller.getAll);
 // app.get();
 app.post('/api/product', controller.create);
-// app.put();
-// app.delete();
+app.put('/api/product/:id', controller.update);
+app.delete('/api/product/:id', controller.delete);
 
 const port = 4000;
 massive(process.env.CONNECTION_STRING)

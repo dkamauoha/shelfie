@@ -17,5 +17,18 @@ module.exports = {
                 res.status(500).send({errorMessage: 'Something went wrong.'});
             })
             
+    },
+    update: (req, res, next) => {
+        const dbInstance = req.app.get('db');
+
+    },
+    delete: (req, res, next) => {
+        const dbInstance = req.app.get('db');
+        dbInstance.delete_product([req.params.id])
+            .then(() => res.sendStatus(200))
+            .catch(err => {
+                console.log(err)
+                res.status(500).send({errorMessage: 'Something went wrong'})
+            })
     }
 }

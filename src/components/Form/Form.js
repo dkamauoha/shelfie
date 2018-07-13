@@ -7,7 +7,7 @@ export default class Form extends Component {
         this.state = {
             name: '',
             price: 0,
-            imageUrl: '',
+            image_url: '',
         }
     }
 

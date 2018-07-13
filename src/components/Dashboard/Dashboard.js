@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import Product from '../Product/Product';
 
@@ -8,6 +9,13 @@ export default class Dashboard extends Component {
         this.state = {
 
         }
+        this.deleteProduct = this.deleteProduct.bind(this);
+    }
+
+    deleteProduct (id) {
+        axios.delete(`/api/product/${id}`).then(response => {
+            this.props.updateInventory(response.data);
+        })
     }
 
     render () {
@@ -15,7 +23,7 @@ export default class Dashboard extends Component {
             return (
                 <Product key={i}
                     product={product}
-                    updateInventory={this.props.updateInventory}/>
+                    deleteProduct={this.deleteProduct}/>
             )
         })
         return (
